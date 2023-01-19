@@ -17,5 +17,15 @@
   "bugs": {
     "url": "https://github.com/mmaazkhanhere/quiz/issues"
   },
-  "homepage": "https://github.com/mmaazkhanhere/quiz#readme"
+  "homepage": "https://github.com/mmaazkhanhere/quiz#readme",
+  "devDependencies": {
+    "@types/chalk-animation": "^1.6.1",
+    "@types/inquirer": "^9.0.3",
+    "@types/node": "^18.11.18"
+  },
+  "dependencies": {
+    "chalk": "^5.2.0",
+    "chalk-animation": "^2.0.3",
+    "inquirer": "^9.1.4"
+  }
 }
