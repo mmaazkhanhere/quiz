@@ -62,7 +62,7 @@ async function quizQuestions(){
         if(answer.Q2=='JavaScript'){
             score++;
         }
-    })
+    });
 
     let Q3= await inquirer.prompt([{
         name:'Q3',
@@ -71,6 +71,61 @@ async function quizQuestions(){
         choices:['Gradual','Dynamic','Duck','All of the above'],
     }]).then(async (answer)=>{
         if(answer.Q3=='Ducks'){
+            score++;
+        }
+    });
+
+    let Q4= await inquirer.prompt([{
+        name:'Q4',
+        list:'list',
+        message:'What is the inherited type for the variable example in \'const example = [\'Dylan\']\'?',
+        choices:['any []','string []','string','unknown []']
+    }]).then(async (answer)=>{
+        if(answer.Q4=='string []'){
+            score++;
+        }
+    });
+
+    let Q5= await inquirer.prompt([{
+        name:'Q5',
+        list:'list',
+        message:'TypeScript will always correctly infer the type of an array.',
+        choices:['True','False'],
+    }]).then(async (answer)=>{
+        if(answer.Q5=='False'){
+            score++;
+        }
+    });
+
+    let Q6= await inquirer.prompt([{
+        name:'Q6',
+        list:'list',
+        message:'TypeScript will always correctly infer the type of an array.',
+        choices:['True','False'],
+    }]).then(async (answer)=>{
+        if(answer.Q6=='False'){
+            score++;
+        }
+    });
+
+    let Q7= await inquirer.prompt([{
+        name:'Q7',
+        list:'list',
+        message:'Type Aliases are mostly used with ______.',
+        choices:['Strings','Booleans','Numbers','None'],
+    }]).then(async (answer)=>{
+        if(answer.Q7=='Strings'){
+            score++;
+        }
+    });
+
+    let Q8= await inquirer.prompt([{
+        name:'Q8',
+        list:'list',
+        message:'_____ is similar to 'any', but a safer alternative when uncertain about the type.',
+        choices:['never','similar','unknown','none of the above'],
+    }]).then(async (answer)=>{
+        if(answer.Q8=='none of the above'){
             score++;
         }
     })
