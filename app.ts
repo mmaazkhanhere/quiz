@@ -42,7 +42,7 @@ async function quiz() {
 }
 
 async function quizQuestions(){
-    let questions= await inquirer.prompt([{
+    let Q1= await inquirer.prompt([{
         name:'Q1',
         type:'list',
         message:'Which company developed and maintains Typescript',
@@ -51,6 +51,28 @@ async function quizQuestions(){
       if(answer.Q1=='Microsoft'){
         score++;
       }  
+    });
+    
+    let Q2= await inquirer.prompt([{
+        name:'Q2',
+        list:'list',
+        message:'TypeScript is superset of :',
+        choices:['HTML','JavaScript','CSS','Python'],
+    }]).then(async (answer)=>{
+        if(answer.Q2=='JavaScript'){
+            score++;
+        }
+    })
+
+    let Q3= await inquirer.prompt([{
+        name:'Q3',
+        list:'list',
+        message:'Which of the following is the typing principle of typescript?',
+        choices:['Gradual','Dynamic','Duck','All of the above'],
+    }]).then(async (answer)=>{
+        if(answer.Q3=='Ducks'){
+            score++;
+        }
     })
 };
 
