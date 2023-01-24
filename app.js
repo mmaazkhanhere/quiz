@@ -2,7 +2,7 @@
 import inquirer from "inquirer";
 import chalk from "chalk";
 import chalkAnimation from "chalk-animation";
-let score = 0;
+let score = 0; //user intial score
 function animationOff() {
     return new Promise((res) => {
         setTimeout(res, 2500);
@@ -19,16 +19,9 @@ async function userName() {
             type: 'input',
             message: 'Please enter your name: ',
         }]);
-    let secondTitle = chalkAnimation.pulse(`Welcome ${UserName.UserName}`);
+    let secondTitle = chalkAnimation.pulse(`Welcome ${UserName.UserName}`); //username displayed in animation
     await animationOff();
     secondTitle.stop();
-}
-async function quiz() {
-    await animationDisplay();
-    await userName();
-    console.log(chalk.bgMagenta(`\nPlease follow the guidelines.\nThere is no time limit. 8 questions will be displayed to you and each hold 1 marks.\nBest of luck for the quiz.\n`));
-    await quizQuestions();
-    console.log(chalk.bgBlue(`\nYour score is: ${score}`));
 }
 async function quizQuestions() {
     let Q1 = async function q1() {
@@ -37,9 +30,9 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'Which company developed and maintains Typescript',
                 choices: ['Google', 'Facebook', 'Microsoft', 'Apple']
-            }]).then(async (answer) => {
-            if (answer.Q1 == 'Microsoft') {
-                score++;
+            }]).then((answer) => {
+            if (answer.Q1 == 'Microsoft') { //if user select Microsoft as answer, increment his score (means he has correctly attempted the question)
+                score++; //increment score by 1
             }
         });
     };
@@ -49,7 +42,7 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'TypeScript is superset of :',
                 choices: ['HTML', 'JavaScript', 'CSS', 'Python'],
-            }]).then(async (answer) => {
+            }]).then((answer) => {
             if (answer.Q2 == 'JavaScript') {
                 score++;
             }
@@ -61,7 +54,7 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'Which of the following is the typing principle of typescript?',
                 choices: ['Gradual', 'Dynamic', 'Duck', 'All of the above'],
-            }]).then(async (answer) => {
+            }]).then((answer) => {
             if (answer.Q3 == 'Duck') {
                 score++;
             }
@@ -73,7 +66,7 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'What is the inherited type for the variable example in \'const example = [\'Dylan\']\'?',
                 choices: ['any []', 'string []', 'string', 'unknown []']
-            }]).then(async (answer) => {
+            }]).then((answer) => {
             if (answer.Q4 == 'string []') {
                 score++;
             }
@@ -85,7 +78,7 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'TypeScript will always correctly infer the type of an array.',
                 choices: ['True', 'False'],
-            }]).then(async (answer) => {
+            }]).then((answer) => {
             if (answer.Q5 == 'False') {
                 score++;
             }
@@ -97,7 +90,7 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'A ____ in terms of OOP is a blueprint for creating objects',
                 choices: ['method', 'function', 'constructor', 'class'],
-            }]).then(async (answer) => {
+            }]).then((answer) => {
             if (answer.Q6 == 'class') {
                 score++;
             }
@@ -109,7 +102,7 @@ async function quizQuestions() {
                 type: 'list',
                 message: 'Type Aliases are mostly used with ______.',
                 choices: ['Strings', 'Booleans', 'Numbers', 'None'],
-            }]).then(async (answer) => {
+            }]).then((answer) => {
             if (answer.Q7 == 'Strings') {
                 score++;
             }
@@ -127,9 +120,16 @@ async function quizQuestions() {
             }
         });
     };
-    let questionsToAsk = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8];
-    for (let i = 0; i < questionsToAsk.length; i++) {
-        await questionsToAsk[i]();
+    let questionsToAsk = [Q1, Q2, Q3, Q4, Q5, Q6, Q7, Q8]; //adding all question into an array
+    for (let i = 0; i < questionsToAsk.length; i++) { //asking the questions
+        await questionsToAsk[i](); //await so that it waits until user select an option
     }
+}
+async function quiz() {
+    await animationDisplay();
+    await userName();
+    console.log(chalk.bgMagenta(`\nPlease follow the guidelines.\nThere is no time limit. 8 questions will be displayed to you and each hold 1 marks.\nBest of luck for the quiz.\n`));
+    await quizQuestions();
+    console.log(chalk.bgBlue(`\nYour score is: ${score}`));
 }
 quiz();
