@@ -35,7 +35,7 @@ async function userName() {
 async function quiz() {
     await animationDisplay();
     await userName();
-    console.log(`\nPlease follow the guidelines.\nThere is no time limit. 10 questions will be displayed to you and each hold 1 marks.\nBest of luck for the quiz.\n`);
+    console.log(chalk.bgMagenta(`\nPlease follow the guidelines.\nThere is no time limit. 8 questions will be displayed to you and each hold 1 marks.\nBest of luck for the quiz.\n`));
     await quizQuestions();
     console.log(chalk.bgBlue(`\nYour score is: ${score}`));
 }
@@ -78,7 +78,7 @@ async function quizQuestions(){
         message:'Which of the following is the typing principle of typescript?',
         choices:['Gradual','Dynamic','Duck','All of the above'],
     }]).then(async (answer)=>{
-        if(answer.Q3=='Ducks'){
+        if(answer.Q3=='Duck'){
             score++;
         }
     });
@@ -117,10 +117,10 @@ async function quizQuestions(){
     await inquirer.prompt([{
         name:'Q6',
         type:'list',
-        message:'TypeScript will always correctly infer the type of an array.',
-        choices:['True','False'],
+        message:'A ____ in terms of OOP is a blueprint for creating objects',
+        choices:['method','function','constructor','class'],
     }]).then(async (answer)=>{
-        if(answer.Q6=='False'){
+        if(answer.Q6=='class'){
             score++;
         }
     });
@@ -148,7 +148,7 @@ async function quizQuestions(){
         message:'_____ is similar to \'any\', but a safer alternative when uncertain about the type.',
         choices:['never','similar','unknown','none of the above'],
     }]).then(async (answer)=>{
-        if(answer.Q8=='none of the above'){
+        if(answer.Q8=='unknown'){
             score++;
         }
     })
@@ -158,7 +158,6 @@ let questionsToAsk=[Q1,Q2,Q3,Q4,Q5,Q6,Q7,Q8];
 
 for(let i=0;i<questionsToAsk.length;i++){
     await questionsToAsk[i]();
-    questionsToAsk.splice(i,1)
 }
 }
 
