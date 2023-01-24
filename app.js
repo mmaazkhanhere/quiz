@@ -126,10 +126,10 @@ async function quizQuestions() {
     }
 }
 async function quiz() {
-    await animationDisplay();
-    await userName();
+    await animationDisplay(); //calling display function
+    await userName(); //calling username function
     console.log(chalk.bgMagenta(`\nPlease follow the guidelines.\nThere is no time limit. 8 questions will be displayed to you and each hold 1 marks.\nBest of luck for the quiz.\n`));
-    await quizQuestions();
-    console.log(chalk.bgBlue(`\nYour score is: ${score}`));
+    await quizQuestions(); //calling question functions
+    console.log(chalk.bgBlue(`\nYour score is: ${score}`)); //displaying the user score
 }
 quiz();
